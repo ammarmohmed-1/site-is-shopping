@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    margin:0; padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border:none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+    list-style: none;
+}
+
+$blue : #0984e3;
+$black : #333;
+$white : #fff;
+$gold : gold;
+$light-color : #666;
+$light-bg : #eee;
+$border : .2rem solid $black;
+$box-shadow : 0 .5rem 1rem rgba(0,0,0,.2);
+
+
+
+// starts repeat style
+.btn{
+    margin-top: 1rem;
+    display: inline-block;
+    border-radius: .5rem;
+    padding:13px 2rem;
+    font-size: 1.2rem;
+    color:$white;
+    cursor: pointer;
+    background: $blue;
+    &:hover{background: $black}
+}
+.heading{
+    margin: 50px auto;
+    text-align: center;
+    font-size: 2.5rem;
+    color: $black;
+    font-weight: 600;
+    display: block;
+}
+
+span{color:$blue;}
+p{color:$light-color;}
+
+.price{
+    font-size: 1.2rem;
+    color: $blue;
+    span{
+        color: $black;
+        text-decoration:line-through;
+        font-size: .8rem;
+    }
+}
+
+.box{
+    position: relative;
+    border: $border;
+    overflow: hidden;
+    border-radius: .5rem;
+    box-shadow: $box-shadow;
+    background-color: $white;
+    color: $black;
+}
+.logo{
+    font-size:1.5rem;
+    font-weight: 900;
+    color:$white;
+    i{color:$gold;}
+}
+// ends repeat style
+@keyframes fadeIn { 0%{transform: scale(.5); opacity: 0;}}
+
+@mixin grid($val){
+    display: grid;
+    grid-template-columns: repeat(auto-fit , minmax($val , 1fr));
+    gap: 2rem;
+}
+
+body{ background-color:$light-bg;}
+
+//     header section starts
+.header{
+    background-color:$blue;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem 1rem;
+
+    #search-btn{display: none;}
+    
+    form{
+        position:relative;
+        input{
+            height:45px; width:480px;
+            border-radius: 50px;
+            padding-left: 2rem;
+            font-size: 1.2rem;
+        }
+        label{
+            position: absolute;
+            right:20px; top: 15px;
+            font-size: 1.2rem;
+            color: $light-color;
+            cursor: pointer;
+            &:hover{color: $blue;}
+        }
+    }
+
+
+    .icons{
+        a , div{
+            margin-left: 1rem;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+            &:hover{color: $gold;}
+        }
+    }
+
+}
+
+@media (max-width: 840px){
+    html{font-size: 85%;}
+    .header{form{input{width: 400px;}}}
+}
+@media (max-width:700px){
+    .header{
+        #search-btn{display:block;}
+        #search-box{border-radius: 1px;}
+        .search-form{
+            background-color: $white;
+            transition: all .1s;
+            box-shadow: $box-shadow;
+            position:absolute; width: 100%;
+            top: -4.5rem;  
+        }
+        .search-form_close{ top: 4.5rem;}
+        
+        .icons{
+            display: flex;
+            font-size: 12rem;
+        }
+    }
+}
+@media (max-width:350px){ .header{.logo{display: none;}} }
+
+//     header section ends
+
+
+//     starts style footer
+.quick-links{
+    margin-top: 10rem;
+    background-color: $black;
+    display: flex;
+    justify-content: space-around;
+    padding: 2rem 0rem;
+    .links,.share{
+        a{
+            font-size: 1.1rem;
+            margin-right:10px;
+            color: $white;
+            &:hover{color: gold;}
+        }
+    }  
+    .links{text-align:center;}
+
+    .share{ a{font-size: 1.5rem;} }
+}
+@media (max-width:750px){
+    .links{ a{display: block; margin-top: 10px;} }
+    .credit{ img{display: none;} }
+}
+@media (max-width:337px){
+    footer{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .share{margin-top: 3rem;}
+    }
+    .credit{ img{display: none;} }
+}
+.credit{
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+    p{font-size: 1.3rem;}
+
+}
+//     ends style footer
+
+
+
+//     side-bar section starts
+
+.side-bar{
+    transition: all .5s linear;
+    position: fixed;
+    top: 0px; left: -500%;
+    background-color: $white;
+    box-shadow: 0 0 0 75vw rgba(0,0,0,.7);
+    height: 100vh; width: 20rem;
+    color: $light-color;
+    z-index: 999;
+
+    #close-side-bar{
+        font-size: 2.5rem;
+        position:absolute;
+        right:20px; top:10px;
+        cursor: pointer;
+        &:hover{
+            transform: rotate(90deg);
+            color: $black;
+        }
+    }
+    .user{
+        background-color: $light-bg;
+        text-align: center;
+        padding: 2rem;
+        img {
+            width: 170px;
+            height: auto;
+            border-radius: 50%;
+            border:10px solid $white;
+        }
+        a{color: $blue;&:hover{color: $black;}}
+    }
+
+    .navbar{
+        ul{
+            margin: 10px 30px;
+            
+            li{
+                font-size: 17px;
+                margin-top:1rem;
+                &:hover{color: $blue;}
+                a{
+                    color: $light-color;
+                    &:hover{color: $blue; margin-left: 1rem;}
+                }
+            }
+        }
+    }
+}
+.active{top: 0px; left: 0%;}
+//     side-bar section starts
+
+//     home section starts
+
+.home{
+    background:$white;
+    
+    #offer_prodact {
+        padding: 2rem;
+        text-align: center;
+        font-size: 18px;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        img {
+            display: block;
+            max-width: 300px;
+            // max-width: 300px;
+
+            height:auto;
+            object-fit: cover;
+        }
+    }
+    .button_next-prv{
+        display: flex;
+        width: 90%;
+        justify-content: space-between;
+        position: absolute;
+        top: 13rem;
+        font-size: 2rem;
+        margin: 0rem 5%;
+        #next,#prev{
+            cursor: pointer;
+        }
+    }
+}
+//     home section starts
+
+//     banner section starts
+
+.banner{
+    margin-top:200px;
+    .box-container{
+        @include grid(22rem);
+        justify-items: center;
+        .box{
+            height:15rem;
+            width: auto;
+            min-width: 90%;
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                &:hover{transform: scale(1.2);}
+            }
+            .content{
+                position: absolute;
+                top: 50%; left: 8%;
+                transform: translateY(-50%)  rotate(45deg);
+                h3{color:$black;}
+            }
+        }
+    }
+}
+//     banner section ends
+
+//     arrivals section starts
+.arrivals{
+    margin-top: 9rem ;
+    .box-container{
+        @include grid(25rem);
+        justify-items: center;
+        .box{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 320px;  min-width: 85%;
+            height:200px;
+
+            .image{
+                img{
+                    width:150px;
+                    height:auto;
+                    animation: .3s fadeIn linear;
+                }
+                &:hover{
+                    .main-img{
+                        display: none;
+                    }
+                    .hover-img{display:block;}
+                }
+                .hover-img{display: none;}
+            }
+            i{color: $gold;}
+        }
+    }
+}
+//     arrivals section ends
+
+
+
+// start style the page about html
+
+// starts style this about html part one
+
+.about{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color:$white;
+    max-width: 65rem;
+    min-width: 90%;
+    height: auto;
+    margin:2rem auto ;
+    
+    .image{ img{width:100%;height: 100%;} }
+    
+    .content{
+        color: $light-color;
+        padding: 2rem; font-size: 1.1rem ;
+        
+        h3{
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        p{ padding-top: 2rem; line-height:30px; }
+    }
+}
+@media (max-width:1019px){
+    .about{ width: 90%; grid-template-columns:1fr; }
+}
+
+// ends style this about html part one
+
+.faq{
+    margin: 110px 0px;
+
+    .accordion-container{
+        width: 800px; max-width: 95%;
+        margin: auto;
+
+
+        .accordion{
+            margin-top: 10px;
+
+        .accordion-heading{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.3rem;
+            background-color: $black;
+            color: $white;  cursor: pointer;
+        }
+    .accordion-heading_open{ 
+        background-color: $blue;
+        i{transform: rotate(180deg);}
+    }
+            
+    
+    .accordioin-content{
+                padding: 2rem;
+                background-color: $white;
+                box-shadow: $box-shadow;
+                height: 0px; opacity: 0;
+            }
+    .accordioin-content_open{ height: 150px; opacity: 1;}
+            
+            // style accorduem display none
+            
+            
+        }
+    }
+}
+
+
+// review section starts
+
+.review{
+
+    .swiper-wrapper{
+        display: flex;
+    }
+    .swiper-slide {
+        display: flex;
+        text-align: center;  align-items: center;
+        flex-direction: column;
+        font-size: 18px;
+        background: $white;
+        border: $border;
+        padding: 2rem;
+        width: 160rem;
+        p{
+            max-width: 300px;
+        }
+        img {
+            width: 40%;  height: auto;
+            border-radius: 50%;
+        }
+    }
+
+
+}
+// review section ends
+
+// ends style this about page html 
+
+// srtart style this Products page html 
+// category section starts    
+
+.category{
+    .box-container{
+        @include grid(10rem);
+        gap: 2rem;
+        width: 90%;
+        margin: auto;
+        text-align: center;
+        .box{
+            padding: 1rem 0rem;
+
+            &:hover{ background-color:$black; color: $white; }
+            img{width: 100px; height:auto;}
+        }
+    }
+}
+// category section ends
+
+//   products section starts
+
+.products{
+    .box-container{
+        @include grid(20rem);
+        .box{
+            width: 20rem;
+            border:$border;
+            margin: auto;
+            overflow: hidden;
+            .image{
+                width: 80%;
+                img{
+                    width:100%; height: auto;
+                    animation:.3s fadeIn linear;
+                }
+
+                margin: auto;
+                .hover-img{display: none;}
+                .icons{
+                    position: absolute;
+                    top: 0px;  left: -100px;
+
+                    a{
+                        display: flex;
+                        padding: 1rem;  margin-top: 10px;
+                        background-color:$black;  color: $white;
+                        border-radius: 50%;
+                        &:hover{  background-color: $blue; }
+                    }
+                }
+
+                
+            }
+            .content{
+                text-align: center;
+                padding-bottom: 1rem;
+                i{color:$gold;}
+            }
+            &:hover{
+                .hover-img{display:block; }
+                .main-img{display: none;}
+                // animation: .3s fadeIn linear;
+                .icons{left: 10px;}
+            }
+        }
+    }
+}
+//   products section ends
+
+//   product banner section starts
+.product-banner{
+    margin:110px 0px;
+
+    .box-container{
+        width: 90%;
+        margin: auto;
+        overflow: hidden;
+        @include grid(24rem);
+        .box{
+            img{
+                width:100%; height: auto;
+                float: right;
+                display: flex;
+                flex-wrap: wrap;
+                &:hover{ transform: scale(1.2); }
+            }
+            .content{
+                position: absolute;
+                top: 60px; left:10%;
+
+            }
+        }
+    }
+}
+//   product banner section ends
+// end style this page products
+
+
+// end style this page Contact
+
+//      contact info section starts
+
+.info-container{
+    margin-top: 100px;
+    overflow: hidden;
+    .box-container{
+        @include grid(25rem);
+        text-align: center;
+        margin: auto; 
+        justify-items: center;
+
+        .box{
+            width: 80%; height:250px;
+            padding-top: 3rem;
+            
+            i{
+                background-color: $blue;
+                color: $white;
+                font-size: 2rem;
+                padding: 1rem;
+                border-radius: 50%;
+            }
+            h3{color: $black;}
+            p{margin: .5rem;}
+        }
+    }
+}
+//      contact info section ends
+
+//      contact section starts
+.contact{
+    @include grid(28rem);
+    margin-top: 300px;
+    width: 90%;
+    margin: 300px auto;
+    
+    form{
+        h3{
+            font-size: 2rem; font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        p{
+            margin: 30px 0px;
+            line-height: 30px;
+        }
+
+        .inputBox{
+            input{
+                box-shadow: $box-shadow;
+                border:$border; border-radius: .4rem;
+                margin:10px 10px; padding-left: 20px;
+                width:40%;  height:50px;
+                font-size: 1rem;
+            }
+        }
+
+        textarea{
+            border: $border; border-radius: .4rem;
+            font-size: 1.3rem;
+            margin-left: 10px;  padding: 15px;
+            width: 95%; height:25%;
+            
+        }
+    }
+    .map{ width: 100%; height: 95vh;}
+}
+
+// ends style this page Contact
+
+// starts style this page login && register
+
+.login,.register{
+    display: flex;
+    justify-content: center;
+
+    h3{
+        font-size: 2rem; font-weight: 500;
+        color: $black;
+    }
+    form{
+        padding: 1rem;
+        border:$border; border-radius: .2rem;
+        width: 400px;  max-width: 90%;
+        margin-top: 40px;
+        background: $white;
+        .box{
+            width: 95%; height: 50px;
+            margin-top: 20px;  padding: 1rem;
+            font-size: 1rem;
+        }
+        .remember{  padding: 1rem 0rem;  }
+        .btn{  width: 95%; }
+        p{
+            text-align: center;
+            padding: 1rem;
+        }
+        .link{
+            text-align: center;
+            background-color: $black;  color: $white;
+            &:hover{background-color: $blue;}
+        }
+    }
+}
+
+// ends style this page login && register
+
+// start style the page cart
+
+.shopping-cart{
+    width: 90%;
+    margin: auto;
+    .box-container{
+        @include grid(20rem);
+        .box{
+            display: flex;
+            i{
+                position: absolute;  right: 0px;
+                font-size: 1.8rem;
+                padding: 1rem; color:$light-color;
+                &:hover{color:$black;}
+            }
+            .content{
+                padding-top: 2rem;
+                input{
+                    width: 70px;  height:40px;
+                    background-color:$light-bg;
+                    border-radius: .3rem;
+                    padding-left: 1rem;
+                }
+            }
+            img{  width: 150px;  height: auto; }
+        }
+    }
+
+    .cart-total{
+        background-color:$white;
+        margin-top: 5rem;  padding: 2rem;
+        border: $border; border-radius: .3rem;
+    }
+}
